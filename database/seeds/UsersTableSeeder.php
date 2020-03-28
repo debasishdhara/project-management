@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Super Admin',
             'email' => 'myemail@mail.com',
             'password' => Hash::make('password'),
+            'user_status' => true
         ]);
     }
 }
