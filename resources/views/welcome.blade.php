@@ -161,7 +161,7 @@
                                         <a href="{{ url('/home') }}">Home</a>
                                     </li>
                                 @else
-                                    <li class="active">
+                                    <li>
                                     <a href="{{ route('login') }}">Login</a>
                                     </li>
                                     @if (Route::has('register'))
