@@ -24,9 +24,9 @@ Route::group(['middleware' => ['auth','super-admin']], function () {
 });
 
 Route::group(['middleware' => ['auth','admin']], function () {
-    Route::get('/admin', 'HomeController@index')->name('admin');
+    Route::get('/admin', 'AdminController@index')->name('admin');
 });
 
 Route::group(['middleware' => ['auth','user']], function () {
-    Route::get('/user', 'HomeController@index')->name('user');
+    Route::get('/user', 'UserController@index')->name('user');
 });

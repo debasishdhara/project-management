@@ -157,9 +157,19 @@
                         @if (Route::has('login'))
                             
                                 @auth
+                                  @if(Auth::user()->roles->pluck('role_name')->contains('SUPERADMIN'))
                                     <li class="active">
                                         <a href="{{ url('/home') }}">Home</a>
                                     </li>
+                                  @elseif(Auth::user()->roles->pluck('role_name')->contains('ADMIN'))
+                                    <li class="active">
+                                        <a href="{{ url('/admin') }}">Home</a>
+                                    </li>
+                                  @else
+                                    <li class="active">
+                                      <a href="{{ url('/user') }}">Home</a>
+                                    </li>
+                                  @endif
                                 @else
                                     <li>
                                     <a href="{{ route('login') }}">Login</a>

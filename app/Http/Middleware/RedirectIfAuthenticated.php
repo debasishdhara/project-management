@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             if((Auth::user()->roles->pluck('role_name')->contains('SUPERADMIN')))
                 return redirect(RouteServiceProvider::HOME);
             else if((Auth::user()->roles->pluck('role_name')->contains('ADMIN')))
-                return redirect(RouteServiceProvider::HOME);
+                return redirect(RouteServiceProvider::ADMIN);
             else
                 return redirect(RouteServiceProvider::USER);
         }
