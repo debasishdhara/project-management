@@ -17,11 +17,23 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * The path to the "home" route for your application.
+     * The path to the "home" route for your application. Super Admin Dashboard
      *
      * @var string
      */
     public const HOME = '/home';
+    /**
+     * The path to the "home" route for your application. Admin Dashboard
+     *
+     * @var string
+     */
+    public const ADMIN = '/admin';
+    /**
+     * The path to the "home" route for your application. User Dashboard
+     *
+     * @var string
+     */
+    public const USER = '/user';
 
     /**
      * Define your route model bindings, pattern filters, etc.

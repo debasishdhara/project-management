@@ -19,4 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth','super-admin']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Route::group(['middleware' => ['auth','admin']], function () {
+    Route::get('/admin', 'HomeController@index')->name('admin');
+});
+
+Route::group(['middleware' => ['auth','user']], function () {
+    Route::get('/user', 'HomeController@index')->name('user');
+});

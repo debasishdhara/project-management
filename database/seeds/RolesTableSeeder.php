@@ -18,6 +18,9 @@ class RolesTableSeeder extends Seeder
         ],[
             'role_name' => 'ADMIN',
             'role_status' => true
+        ],[
+            'role_name' => 'USER',
+            'role_status' => true
         ]]);
     }
 }
