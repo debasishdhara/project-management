@@ -12,6 +12,18 @@ class Licence extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'licence_name',
+        'licence_key',
+        'licence_description',
+        'licence_discount',
+        'licence_amount',
+        'licence_tax',
+        'licence_taxableamount',
+        'licence_net_amount',
+        'licence_validity',
+        'licence_from',
+        'licence_to',
+        'licence_mac',
+        'licence_status'
     ];
 }
