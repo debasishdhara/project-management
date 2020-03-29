@@ -158,16 +158,16 @@
                             
                                 @auth
                                   @if(Auth::user()->roles->pluck('role_name')->contains('SUPERADMIN'))
-                                    <li class="active">
-                                        <a href="{{ url('/home') }}">Home</a>
+                                    <li>
+                                        <a href="{{ url('/home') }}">Go To Dashboard</a>
                                     </li>
                                   @elseif(Auth::user()->roles->pluck('role_name')->contains('ADMIN'))
-                                    <li class="active">
-                                        <a href="{{ url('/admin') }}">Home</a>
+                                    <li>
+                                        <a href="{{ url('/admin') }}">Go To Dashboard</a>
                                     </li>
                                   @else
-                                    <li class="active">
-                                      <a href="{{ url('/user') }}">Home</a>
+                                    <li>
+                                      <a href="{{ url('/user') }}">Go To Dashboard</a>
                                     </li>
                                   @endif
                                 @else
