@@ -19,6 +19,6 @@ class CompanyController extends Controller
     }
 
     public function index(){
-        
+        return view('super.company.index');
     }
 }

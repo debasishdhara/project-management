@@ -7,9 +7,12 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-
+    window.$ = $.extend(require('jquery-ui-bundle'));
+    window.Popper = require('popper.js').default;
+    window.dataTables = require('datatables');
+    window.moment = require('moment-timezone');
+    window.toastr = require('toastr');
     require('bootstrap');
 } catch (e) {}
 

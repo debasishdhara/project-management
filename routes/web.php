@@ -21,7 +21,9 @@ Auth::routes(['register' => false]);
 
 Route::group(['middleware' => ['auth','super-admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    // Route::get('/home', 'Company@index')->name('home');
+    Route::namespace('Super')->group(function () {
+        Route::get('/company', 'CompanyController@index')->name('company');
+    });
     // Route::get('/home', 'HomeController@index')->name('home');
     // Route::get('/home', 'HomeController@index')->name('home');
 });

@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="icon" href="{{ asset('theme/assets/images/favicon.ico')}}" type="image/x-icon"/>
     <!-- Vector CSS -->
@@ -28,6 +30,7 @@
     <link href="{{ asset('theme/assets/css/skins.css')}}" rel="stylesheet"/>
 </head>
 <body>
+    <div id="app">
     <!-- start loader -->
     <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
     <!-- end loader -->
@@ -94,7 +97,7 @@
             </div>
             <div class="user-details">
             <div class="media align-items-center user-pointer collapsed" data-toggle="collapse" data-target="#user-dropdown">
-            <div class="avatar"><img class="mr-3 side-user-img" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+            <div class="avatar"><img class="mr-3 side-user-img" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
             <div class="media-body">
             <h6 class="side-user-name">{{ Auth::user()->name }}</h6>
             </div>
@@ -118,7 +121,7 @@
             <ul class="sidebar-menu">
             <li class="sidebar-header">MAIN NAVIGATION</li>
             <li class="sidebar-menu">
-                <a href="javaScript:void(0);" class="waves-effect">
+                <a href="{{ route('home') }}" class="waves-effect">
                 <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                 </a>
                 {{--  <ul class="sidebar-submenu">
@@ -131,6 +134,17 @@
                 </ul>  --}}
             </li>
             <li>
+                <a href="{{ route('company') }}" class="waves-effect">
+                <i class="fa fa-industry"></i> <span>Company</span>
+                {{--  <i class="fa fa-angle-left pull-right"></i>  --}}
+                </a>
+                {{--  <ul class="sidebar-submenu">
+                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Create</a></li>
+                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level One</a></li>
+                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level One</a></li>
+                </ul>  --}}
+            </li>
+            {{--  <li>
                 <a href="javaScript:void(0);" class="waves-effect">
                 <i class="fa fa-share"></i> <span>Multilevel</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -152,7 +166,7 @@
                 </li>
                 <li><a href="javaScript:void(0);" class="waves-effect"><i class="zmdi zmdi-dot-circle-alt"></i> Level One</a></li>
                 </ul>
-            </li>
+            </li>  --}}
             {{--  <li class="sidebar-header">LABELS</li>
             <li><a href="javaScript:void(0);" class="waves-effect"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a></li>
             <li><a href="javaScript:void(0);" class="waves-effect"><i class="zmdi zmdi-chart-donut text-success"></i> <span>Warning</span></a></li>
@@ -193,7 +207,7 @@
                         <li class="list-group-item">
                         <a href="javaScript:void(0);">
                         <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
                             <div class="media-body">
                             <h6 class="mt-0 msg-title">Jhon Deo</h6>
                             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -205,7 +219,7 @@
                         <li class="list-group-item">
                         <a href="javaScript:void(0);">
                         <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
                             <div class="media-body">
                             <h6 class="mt-0 msg-title">Sara Jen</h6>
                             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -217,7 +231,7 @@
                         <li class="list-group-item">
                         <a href="javaScript:void(0);">
                         <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
                             <div class="media-body">
                             <h6 class="mt-0 msg-title">Dannish Josh</h6>
                             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -229,7 +243,7 @@
                         <li class="list-group-item">
                         <a href="javaScript:void(0);">
                         <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
                             <div class="media-body">
                             <h6 class="mt-0 msg-title">Katrina Mccoy</h6>
                             <p class="msg-info">Lorem ipsum dolor sit amet.</p>
@@ -301,13 +315,13 @@
                 </li> --}}
                 <li class="nav-item">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                    <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
+                    <span class="user-profile"><img src="{{asset('theme/assets/images/110x110.png')}}" class="img-circle" alt="user avatar"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                 <li class="dropdown-item user-details">
                     <a href="javaScript:void(0);">
                     <div class="media">
-                        <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+                        <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
                         <div class="media-body">
                         <h6 class="mt-2 user-title">{{ Auth::user()->name }}</h6>
                         <p class="user-subtitle">{{ Auth::user()->email }}</p>
@@ -399,8 +413,8 @@
         </div>
         <!--end color switcher-->
     </div>
-
-    <!-- Bootstrap core JavaScript-->
+</div>
+    {{--  <!-- Bootstrap core JavaScript-->
     <script src="{{asset('theme/assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('theme/assets/js/popper.min.js')}}"></script>
     <script src="{{asset('theme/assets/js/bootstrap.min.js')}}"></script>
@@ -413,8 +427,8 @@
     <script src="{{ asset('theme/assets/js/jquery.loading-indicator.js')}}"></script>
     <!-- Custom scripts -->
     <script src="{{ asset('theme/assets/js/app-script.js')}}"></script>
-    <!-- Chart js -->
-    
+    <!-- Chart js -->  --}}
+{{--      
     <script src="{{ asset('theme/assets/plugins/Chart.js/Chart.min.js')}}"></script>
     <!-- Vector map JavaScript -->
     <script src="{{ asset('theme/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
@@ -423,15 +437,12 @@
     <script src="{{ asset('theme/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
     <!-- Sparkline JS -->
     <script src="{{ asset('theme/assets/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
-    <script src="{{ asset('theme/assets/plugins/jquery-knob/excanvas.js')}}"></script>
-    <script src="{{ asset('theme/assets/plugins/jquery-knob/jquery.knob.js')}}"></script>
+    <script src="{{ asset('theme/assets/plugins/jquery-knob/excanvas.js')}}"></script>  --}}
+    {{-- <script src="{{ asset('theme/assets/plugins/jquery-knob/jquery.knob.js')}}"></script>
         
-        <script>
-            $(function() {
-                $(".knob").knob();
-            });
-        </script>
+         --}}
     <!-- Index js -->
     {{--  <script src="{{ asset('theme/assets/js/index.js')}}"></script>  --}}
+    
 </body>
 </html>
