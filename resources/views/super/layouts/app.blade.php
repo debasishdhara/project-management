@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{--  <script src="{{ asset('js/app.js') }}" defer></script>  --}}
 
     <link rel="icon" href="{{ asset('theme/assets/images/favicon.ico')}}" type="image/x-icon"/>
     <!-- Vector CSS -->
@@ -28,6 +28,8 @@
     <link href="{{ asset('theme/assets/css/app-style.css')}}" rel="stylesheet"/>
     <!-- skins CSS-->
     <link href="{{ asset('theme/assets/css/skins.css')}}" rel="stylesheet"/>
+
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -414,7 +416,7 @@
         <!--end color switcher-->
     </div>
 </div>
-    {{--  <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap core JavaScript-->
     <script src="{{asset('theme/assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('theme/assets/js/popper.min.js')}}"></script>
     <script src="{{asset('theme/assets/js/bootstrap.min.js')}}"></script>
@@ -427,7 +429,7 @@
     <script src="{{ asset('theme/assets/js/jquery.loading-indicator.js')}}"></script>
     <!-- Custom scripts -->
     <script src="{{ asset('theme/assets/js/app-script.js')}}"></script>
-    <!-- Chart js -->  --}}
+    <!-- Chart js -->
 {{--      
     <script src="{{ asset('theme/assets/plugins/Chart.js/Chart.min.js')}}"></script>
     <!-- Vector map JavaScript -->
@@ -443,6 +445,6 @@
          --}}
     <!-- Index js -->
     {{--  <script src="{{ asset('theme/assets/js/index.js')}}"></script>  --}}
-    
+    @yield('script')
 </body>
 </html>

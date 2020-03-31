@@ -24,7 +24,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "datatable": "^2.0.2",
         "datatables": "^1.10.18",
         "jquery-ui-bundle": "^1.12.1-migrate",
         "moment-timezone": "^0.5.28",

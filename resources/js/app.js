@@ -6,13 +6,7 @@
 
 require('./bootstrap');
 
-require('../theme/assets/js/jquery.min.js');
-require('../theme/assets/js/popper.min.js');
-require('../theme/assets/js/bootstrap.min.js');
-require('../theme/assets/plugins/simplebar/js/simplebar.js');
-require('../theme/assets/js/sidebar-menu.js');
-require('../theme/assets/js/jquery.loading-indicator.js');
-require('../theme/assets/js/app-script.js');
+
 window.Vue = require('vue');
 
 /**
