@@ -32,61 +32,9 @@
     @yield('style')
 </head>
 <body>
-    <div id="app">
     <!-- start loader -->
     <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
     <!-- end loader -->
-    {{--  <div id="app">  --}}
-        {{--  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>  --}}
     <!-- Start wrapper-->
     <div id="wrapper">
         <!--Start sidebar-wrapper-->
@@ -126,54 +74,13 @@
                 <a href="{{ route('home') }}" class="waves-effect">
                 <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                 </a>
-                {{--  <ul class="sidebar-submenu">
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> eCommerce</a></li>
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Human Resources</a></li>
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Digital Marketing</a></li>
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Property Listings</a></li>
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Services & Support</a></li>
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Logistics</a></li>
-                </ul>  --}}
             </li>
             <li>
                 <a href="{{ route('company') }}" class="waves-effect">
                 <i class="fa fa-industry"></i> <span>Company</span>
-                {{--  <i class="fa fa-angle-left pull-right"></i>  --}}
                 </a>
-                {{--  <ul class="sidebar-submenu">
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Create</a></li>
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level One</a></li>
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level One</a></li>
-                </ul>  --}}
             </li>
-            {{--  <li>
-                <a href="javaScript:void(0);" class="waves-effect">
-                <i class="fa fa-share"></i> <span>Multilevel</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level One</a></li>
-                <li>
-                    <a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="sidebar-submenu">
-                    <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level Two</a></li>
-                    <li>
-                        <a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                        <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level Three</a></li>
-                        <li><a href="javaScript:void(0);"><i class="zmdi zmdi-dot-circle-alt"></i> Level Three</a></li>
-                        </ul>
-                    </li>
-                    </ul>
-                </li>
-                <li><a href="javaScript:void(0);" class="waves-effect"><i class="zmdi zmdi-dot-circle-alt"></i> Level One</a></li>
-                </ul>
-            </li>  --}}
-            {{--  <li class="sidebar-header">LABELS</li>
-            <li><a href="javaScript:void(0);" class="waves-effect"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a></li>
-            <li><a href="javaScript:void(0);" class="waves-effect"><i class="zmdi zmdi-chart-donut text-success"></i> <span>Warning</span></a></li>
-            <li><a href="javaScript:void(0);" class="waves-effect"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a></li>  --}}
-            </ul>
+        </ul>
         </div>
         <!--End sidebar-wrapper-->
 
@@ -198,123 +105,13 @@
                 <li class="nav-item dropdown-lg">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void(0);">
                     <i class="fa fa-envelope-open-o"></i>
-                    {{-- <span class="badge badge-primary badge-up">12</span> --}}
                 </a>
-                {{-- <div class="dropdown-menu dropdown-menu-right">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                        You have 12 new messages
-                        <span class="badge badge-primary">12</span>
-                        </li>
-                        <li class="list-group-item">
-                        <a href="javaScript:void(0);">
-                        <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
-                            <div class="media-body">
-                            <h6 class="mt-0 msg-title">Jhon Deo</h6>
-                            <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                            <small>Today, 4:10 PM</small>
-                            </div>
-                        </div>
-                        </a>
-                        </li>
-                        <li class="list-group-item">
-                        <a href="javaScript:void(0);">
-                        <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
-                            <div class="media-body">
-                            <h6 class="mt-0 msg-title">Sara Jen</h6>
-                            <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                            <small>Yesterday, 8:30 AM</small>
-                            </div>
-                        </div>
-                        </a>
-                        </li>
-                        <li class="list-group-item">
-                        <a href="javaScript:void(0);">
-                        <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
-                            <div class="media-body">
-                            <h6 class="mt-0 msg-title">Dannish Josh</h6>
-                            <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                            <small>5/11/2018, 2:50 PM</small>
-                            </div>
-                        </div>
-                        </a>
-                        </li>
-                        <li class="list-group-item">
-                        <a href="javaScript:void(0);">
-                        <div class="media">
-                            <div class="avatar"><img class="align-self-start mr-3" src="{{asset('theme/assets/images/110x110.png')}}" alt="user avatar"></div>
-                            <div class="media-body">
-                            <h6 class="mt-0 msg-title">Katrina Mccoy</h6>
-                            <p class="msg-info">Lorem ipsum dolor sit amet.</p>
-                            <small>1/11/2018, 2:50 PM</small>
-                            </div>
-                        </div>
-                        </a>
-                        </li>
-                        <li class="list-group-item text-center"><a href="javaScript:void(0);">See All Messages</a></li>
-                    </ul>
-                </div> --}}
                 </li>
                 <li class="nav-item dropdown-lg">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void(0);">
                 <i class="fa fa-bell-o"></i>
-                {{-- <span class="badge badge-info badge-up">14</span> --}}
                 </a>
-                {{-- <div class="dropdown-menu dropdown-menu-right">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                    You have 14 Notifications
-                    <span class="badge badge-info">14</span>
-                    </li>
-                    <li class="list-group-item">
-                    <a href="javaScript:void(0);">
-                    <div class="media">
-                        <i class="zmdi zmdi-accounts fa-2x mr-3 text-info"></i>
-                        <div class="media-body">
-                        <h6 class="mt-0 msg-title">New Registered Users</h6>
-                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                    </a>
-                    </li>
-                    <li class="list-group-item">
-                    <a href="javaScript:void(0);">
-                    <div class="media">
-                        <i class="zmdi zmdi-coffee fa-2x mr-3 text-warning"></i>
-                        <div class="media-body">
-                        <h6 class="mt-0 msg-title">New Received Orders</h6>
-                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                    </a>
-                    </li>
-                    <li class="list-group-item">
-                    <a href="javaScript:void(0);">
-                    <div class="media">
-                        <i class="zmdi zmdi-notifications-active fa-2x mr-3 text-danger"></i>
-                        <div class="media-body">
-                        <h6 class="mt-0 msg-title">New Updates</h6>
-                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                        </div>
-                    </div>
-                    </a>
-                    </li>
-                    <li class="list-group-item text-center"><a href="javaScript:void(0);">See All Notifications</a></li>
-                    </ul>
-                </div> --}}
                 </li>
-                {{-- <li class="nav-item language">
-                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-flag"></i></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li class="dropdown-item"> <i class="flag-icon flag-icon-gb mr-2"></i> English</li>
-                    <li class="dropdown-item"> <i class="flag-icon flag-icon-fr mr-2"></i> French</li>
-                    <li class="dropdown-item"> <i class="flag-icon flag-icon-cn mr-2"></i> Chinese</li>
-                    <li class="dropdown-item"> <i class="flag-icon flag-icon-de mr-2"></i> German</li>
-                    </ul>
-                </li> --}}
                 <li class="nav-item">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
                     <span class="user-profile"><img src="{{asset('theme/assets/images/110x110.png')}}" class="img-circle" alt="user avatar"></span>
@@ -331,8 +128,6 @@
                     </div>
                     </a>
                     </li>
-                    {{-- <li class="dropdown-divider"></li>
-                    <li class="dropdown-item"><i class="icon-envelope mr-2"></i> Inbox</li> --}}
                     <li class="dropdown-divider"></li>
                     <li class="dropdown-item"><i class="icon-user mr-2"></i> My Profile</li>
                     <li class="dropdown-divider"></li>
@@ -415,7 +210,6 @@
         </div>
         <!--end color switcher-->
     </div>
-</div>
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('theme/assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('theme/assets/js/popper.min.js')}}"></script>
@@ -429,22 +223,6 @@
     <script src="{{ asset('theme/assets/js/jquery.loading-indicator.js')}}"></script>
     <!-- Custom scripts -->
     <script src="{{ asset('theme/assets/js/app-script.js')}}"></script>
-    <!-- Chart js -->
-{{--      
-    <script src="{{ asset('theme/assets/plugins/Chart.js/Chart.min.js')}}"></script>
-    <!-- Vector map JavaScript -->
-    <script src="{{ asset('theme/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-    <script src="{{ asset('theme/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <!-- Easy Pie Chart JS -->
-    <script src="{{ asset('theme/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
-    <!-- Sparkline JS -->
-    <script src="{{ asset('theme/assets/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
-    <script src="{{ asset('theme/assets/plugins/jquery-knob/excanvas.js')}}"></script>  --}}
-    {{-- <script src="{{ asset('theme/assets/plugins/jquery-knob/jquery.knob.js')}}"></script>
-        
-         --}}
-    <!-- Index js -->
-    {{--  <script src="{{ asset('theme/assets/js/index.js')}}"></script>  --}}
     @yield('script')
 </body>
 </html>

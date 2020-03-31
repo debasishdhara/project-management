@@ -32,6 +32,7 @@ class CreateCompaniesTable extends Migration
             $table->date('company_from')->nullable();
             $table->date('company_to')->nullable();
             $table->boolean('company_status')->default(false);
+            $table->string('company_logo')->nullable();
             $table->timestamps();
         });
     }

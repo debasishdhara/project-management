@@ -15,7 +15,7 @@
 </div>
 <!--Start Company Index Content-->
 
-<div class="row">
+<div class="row col">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header"><i class="fa fa-table"></i>All Companies Details <div class="pull-right"><a class="btn btn-primary" href="javascript:void(0);">Add Company</a></div></div>
@@ -24,13 +24,13 @@
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">
           <thead>
               <tr>
-                  <th>Company Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Registration Number</th>
-                  <th>Licence Valid Upto</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th class="col">Company Name</th>
+                  <th class="col">Email</th>
+                  <th class="col">Phone</th>
+                  <th class="col">Registration Number</th>
+                  <th class="col">Licence Valid Upto</th>
+                  <th class="col">Status</th>
+                  <th class="col">Action</th>
               </tr>
           </thead>
           <tbody>
