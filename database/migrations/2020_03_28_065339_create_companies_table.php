@@ -31,8 +31,9 @@ class CreateCompaniesTable extends Migration
             $table->bigInteger('company_validity')->default(1);
             $table->date('company_from')->nullable();
             $table->date('company_to')->nullable();
-            $table->boolean('company_status')->default(false);
             $table->string('company_logo')->nullable();
+            $table->string('company_remarks')->nullable();
+            $table->boolean('company_status')->default(false);
             $table->timestamps();
         });
     }

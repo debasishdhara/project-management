@@ -21,31 +21,29 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header text-uppercase">
-              Validation Form Wizard
+              Company Details
             </div>
             <div class="card-body">
-             <form id="wizard-validation-form" action="#">
+                {!! Form::open(['url'=>'store-company','id'=>'wizard-validation-form','files' => 'true','enctype'=>'multipart/form-data']) !!}
                     <div>
-                        <h3>Step 1</h3>
+                        <h3>Company Details</h3>
                         <section>
-                            <div class="form-group">
-                                <label for="userName2">User name </label>
-                                <input class="required form-control" id="userName2" name="userName" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label for="password2"> Password *</label>
-                                <input id="password2" name="password" type="text" class="required form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="confirm2">Confirm Password *</label>
-                                <input id="confirm2" name="confirm" type="text" class="required form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-12 control-label">(*) Mandatory</label>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="userName2">User name </label>
+                                        <input class="required form-control" id="userName2" name="userName" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="password2"> Password *</label>
+                                        <input id="password2" name="password" type="text" class="required form-control">
+                                    </div>
+                                </div>                               
                             </div>
                         </section>
-                        <h3>Step 2</h3>
+                        <h3>Admin Details</h3>
                         <section>
 
                             <div class="form-group">
@@ -71,34 +69,34 @@
                                 <label class="col-lg-12 control-label">(*) Mandatory</label>
                             </div>
                         </section>
-                        <h3>Step 3</h3>
+                        <h3>Details Review</h3>
                         <section>
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <ul class="list-unstyled w-list">
+                                    {{-- <ul class="list-unstyled w-list">
                                         <li>First Name : Jonathan </li>
                                         <li>Last Name : Smith </li>
                                         <li>Emial: jonathan@example.com</li>
                                         <li>Address: 123 Your City, Cityname. </li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                             </div>
                         </section>
-                        <h3>Step Final</h3>
+                        <h3>Remarks</h3>
                         <section>
                             <div class="form-group">
                                 <div class="col-lg-12">
                                   
-                                <div class="icheck-material-white">
+                                {{-- <div class="icheck-material-white">
                                    <input id="acceptTerms-2" name="acceptTerms2" type="checkbox" class="required">
                                     <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
-                                </div>
+                                </div> --}}
                                     
                                 </div>
                             </div>
                         </section>
                     </div>
-                </form>
+                    {!! Form::close() !!}
             </div>
           </div>
         </div>
