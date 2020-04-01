@@ -80,6 +80,18 @@
                 <i class="fa fa-industry"></i> <span>Company</span>
                 </a>
             </li>
+            <li class="{{ (request()->is('common*')) ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="waves-effect">
+                <i class="fa fa-industry"></i> <span>Location Settings</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li class="{{ (request()->is('common/fetch-countries')) ? 'active' : '' }}"><a href="{{route('fetch-countries')}}"><i class="zmdi zmdi-arrow-forward"></i> Country</a></li>
+                    <li class="{{ (request()->is('common/fetch-states')) ? 'active' : '' }}"><a href="{{route('fetch-states')}}"><i class="zmdi zmdi-arrow-forward"></i> State</a></li>
+                    <li class="{{ (request()->is('common/fetch-cities')) ? 'active' : '' }}"><a href="{{route('fetch-cities')}}"><i class="zmdi zmdi-arrow-forward"></i> City</a></li>
+                    <li class="{{ (request()->is('common/fetch-sub-cities')) ? 'active' : '' }}"><a href="{{route('fetch-sub-cities')}}"><i class="zmdi zmdi-arrow-forward"></i> Sub City</a></li>
+                </ul>
+            </li>
         </ul>
         </div>
         <!--End sidebar-wrapper-->

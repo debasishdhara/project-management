@@ -6153,7 +6153,22 @@ table.grid td {
 }
 
 
+.sidebar-submenu>li>.active{
+  background: #292b2d;
+  border-radius: 5px;  
+}
 
 
+.sidebar-submenu>li:hover{
+    background: #292b2d;
+}
 
+
+.dtr-modal-display{
+    background: #242526 !important;
+}
+.dtr-modal-close{
+    background: #242526 !important;
+    border: 1px solid #0b0b0c !important;
+}
 
