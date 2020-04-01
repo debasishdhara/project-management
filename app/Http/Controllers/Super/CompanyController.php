@@ -21,4 +21,8 @@ class CompanyController extends Controller
     public function index(){
         return view('super.company.index');
     }
+
+    public function addcompany(){
+        return view('super.company.create');
+    }
 }

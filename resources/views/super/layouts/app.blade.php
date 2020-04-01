@@ -70,12 +70,12 @@
             </div>
             <ul class="sidebar-menu">
             <li class="sidebar-header">MAIN NAVIGATION</li>
-            <li class="sidebar-menu">
+            <li class="sidebar-menu {{ (request()->is('home*')) ? 'active' : '' }}">
                 <a href="{{ route('home') }}" class="waves-effect">
                 <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ (request()->is('company*')) ? 'active' : '' }}">
                 <a href="{{ route('company') }}" class="waves-effect">
                 <i class="fa fa-industry"></i> <span>Company</span>
                 </a>

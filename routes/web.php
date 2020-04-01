@@ -22,7 +22,10 @@ Auth::routes(['register' => false]);
 Route::group(['middleware' => ['auth','super-admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::namespace('Super')->group(function () {
-        Route::get('/company', 'CompanyController@index')->name('company');
+        Route::prefix('company')->group(function () {
+            Route::get('/', 'CompanyController@index')->name('company');
+            Route::get('/add', 'CompanyController@addcompany')->name('add-company');
+        });
     });
     // Route::get('/home', 'HomeController@index')->name('home');
     // Route::get('/home', 'HomeController@index')->name('home');
@@ -35,3 +38,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
 Route::group(['middleware' => ['auth','user']], function () {
     Route::get('/user', 'UserController@index')->name('user');
 });
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
