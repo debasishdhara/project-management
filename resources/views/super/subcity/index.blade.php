@@ -19,7 +19,7 @@
 <div class="row col">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header"><i class="fa fa-table"></i>All Companies Details <div class="pull-right"><a class="btn btn-primary" href="{{route('add-company')}}">Add Company</a></div></div>
+      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Sub City Details</span><div class="pull-right"><a class="btn btn-primary" href="{{route('add-company')}}">Add Sub City</a></div></div>
       <div class="card-body">
         <div class="table-responsive">
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">

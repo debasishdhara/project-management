@@ -17,4 +17,8 @@ class LicenceController extends Controller
         $this->middleware('auth');
         $this->middleware('super-admin');
     }
+
+    public function index(){
+        return view('super.user.index');
+    }
 }

@@ -17,6 +17,7 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('role_name');
             $table->boolean('role_status')->default(false);
+            $table->boolean('primary_status')->default(false);
             $table->timestamps();
         });
     }

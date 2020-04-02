@@ -30,4 +30,8 @@ class Company extends Model
         'company_to',
         'company_status'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class,'company_id','id');
+    }
 }

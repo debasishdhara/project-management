@@ -40,8 +40,10 @@ class LocationController extends Controller
 
     public function delete_city(Request $request){
         //dd($request->city_id);
-        
-        return [];
+        $city = City::find($request->city_id);
+        if(City::where('id',$request->city_id)->update(array('city_status'=>false)))
+            return true;
+        return false;
     }
 
     public function show_sub_city(){

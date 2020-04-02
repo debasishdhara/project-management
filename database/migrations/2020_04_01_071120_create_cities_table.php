@@ -19,6 +19,7 @@ class CreateCitiesTable extends Migration
             $table->unsignedBigInteger('state_id');
             $table->foreign('state_id')->references('id')->on('states')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('city_status')->default(false);
             $table->timestamps();
         });
     }

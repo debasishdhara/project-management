@@ -15,4 +15,12 @@ class Permission extends Model
         'permission_name',
         'permission_status'
     ];
+
+    /**
+     * The permissions that belong to the role.
+     */
+    public function role()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

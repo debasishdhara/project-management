@@ -81,6 +81,22 @@
                 <i class="fa fa-industry"></i> <span>Company</span>
                 </a>
             </li>
+            <li class="{{ (request()->is('users*')) ? 'active' : '' }}">
+                <a href="{{ route('users') }}" class="waves-effect">
+                <i class="fa fa-user-circle-o"></i> <span>User</span>
+                </a>
+            </li>
+            <li class="{{ (request()->is('permission*')) ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="waves-effect">
+                <i class="fa fa-chain"></i> <span>Privilege Settings</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li class="{{ (request()->is('permission/fetch-role')) ? 'active' : '' }}"><a href="{{route('fetch-role')}}"><i class="zmdi zmdi-arrow-forward"></i> Role</a></li>
+                    <li class="{{ (request()->is('permission/fetch-permission')) ? 'active' : '' }}"><a href="{{route('fetch-permission')}}"><i class="zmdi zmdi-arrow-forward"></i> Permission</a></li>
+                    <li class="{{ (request()->is('permission/fetch-licence')) ? 'active' : '' }}"><a href="{{route('fetch-licence')}}"><i class="zmdi zmdi-arrow-forward"></i> Licence</a></li>
+                </ul>
+            </li>
             <li class="{{ (request()->is('common*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="waves-effect">
                 <i class="fa fa-location-arrow"></i> <span>Location Settings</span>

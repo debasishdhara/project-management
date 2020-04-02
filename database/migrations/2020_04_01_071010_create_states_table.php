@@ -19,6 +19,7 @@ class CreateStatesTable extends Migration
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('state_status')->default(false);
             $table->timestamps();
         });
     }

@@ -14,13 +14,16 @@ class RolesTableSeeder extends Seeder
     {
         DB::table('roles')->insert([[
             'role_name' => 'SUPERADMIN',
-            'role_status' => true
+            'role_status' => true,
+            'primary_status' => true
         ],[
             'role_name' => 'ADMIN',
-            'role_status' => true
+            'role_status' => true,
+            'primary_status' => true
         ],[
             'role_name' => 'USER',
-            'role_status' => true
+            'role_status' => true,
+            'primary_status' => true
         ]]);
     }
 }

@@ -7,11 +7,11 @@
 <!-- Breadcrumb-->
 <div class="row pt-2 pb-2">
   <div class="col-sm-9">
-  <h4 class="page-title">Company</h4>
+  <h4 class="page-title">State</h4>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="javaScript:void();">Demo Admin</a></li>
-    <li class="breadcrumb-item"><a href="javaScript:void();">Company</a></li>
-    <li class="breadcrumb-item active" aria-current="page">All Company</li>
+    <li class="breadcrumb-item"><a href="javaScript:void();">Location Setting</a></li>
+    <li class="breadcrumb-item active" aria-current="page">All State</li>
   </ol>
 </div>
 <!--Start Company Index Content-->
@@ -19,7 +19,7 @@
 <div class="row col">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header"><i class="fa fa-table"></i>All Companies Details <div class="pull-right"><a class="btn btn-primary" href="{{route('add-company')}}">Add Company</a></div></div>
+      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All State Details </span> <div class="pull-right"><a class="btn btn-primary" href="{{route('add-company')}}">Add State</a></div></div>
       <div class="card-body">
         <div class="table-responsive">
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">

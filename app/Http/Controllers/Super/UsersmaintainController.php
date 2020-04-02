@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Super;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Permission;
+use App\User;
 
-class PermissionController extends Controller
+class UsersmaintainController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,17 +20,23 @@ class PermissionController extends Controller
     }
 
     public function index(){
-        return view('super.permission.index');
+        return view('super.user.index');
     }
 
-    public function get_permission_json(Request $request){
+    public function addUsers(){
+        return view('super.user.create');
+    }
+
+
+    public function get_users_json(Request $request){
         $columns = array(
             0 => 'id',
-            1 => 'permission_name',
-            2 => 'permission_status',
-            3 => 'id'
+            1 => 'name',
+            2 => 'email',
+            3 => 'user_status',
+            4 => 'id'
         );
-        $totalData = Permission::count();
+        $totalData = User::count();
         $totalFiltered = $totalData; 
         $limit = $request->input('length')?$request->input('length') : 10;
         $start = $request->input('start')?$request->input('start') : 0;
@@ -39,7 +45,7 @@ class PermissionController extends Controller
 
         if(empty($request->input('search.value')))
         {            
-            $posts = Permission::with('role')->offset($start)
+            $posts = User::with('company')->offset($start)
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
@@ -47,17 +53,19 @@ class PermissionController extends Controller
         else {
         $search = $request->input('search.value'); 
 
-        $posts =  Permission::with('role')->where('id','LIKE',"%{$search}%")
-                    ->orWhere('permission_name', 'LIKE',"%{$search}%")
-                    ->orWhere('permission_status', 'LIKE',"%{$search}%")
+        $posts =  User::with('company')->where('id','LIKE',"%{$search}%")
+                    ->orWhere('name', 'LIKE',"%{$search}%")
+                    ->orWhere('email', 'LIKE',"%{$search}%")
+                    ->orWhere('user_status', 'LIKE',"%{$search}%")
                     ->offset($start)
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
 
-        $totalFiltered = Permission::with('role')->where('id','LIKE',"%{$search}%")
-                    ->orWhere('permission_name', 'LIKE',"%{$search}%")
-                    ->orWhere('permission_status', 'LIKE',"%{$search}%")
+        $totalFiltered = User::with('company')->where('id','LIKE',"%{$search}%")
+                    ->orWhere('name', 'LIKE',"%{$search}%")
+                    ->orWhere('email', 'LIKE',"%{$search}%")
+                    ->orWhere('user_status', 'LIKE',"%{$search}%")
                     ->count();
         }
 
@@ -72,11 +80,12 @@ class PermissionController extends Controller
            // &emsp;<a href='{$edit}' title='EDIT' ><span class='glyphicon glyphicon-edit'></span></a>
 
         $nestedData['id'] = $post->id;
-        $nestedData['permission_name'] = $post->permission_name;
-        $nestedData['permission_status'] = ($post->permission_status? 'Active' : 'Inactive');
-        $nestedData['role'] = $post->role!=null ? $post->role->role_name : '-';
-        $nestedData['action'] = "&emsp;<a href='{$edit}' title='EDIT' ><span class='fa fa-edit'></span></a>
-        &emsp;<a href='{$show}' title='SHOW' ><span class='fa fa-trash'></span></a>";
+        $nestedData['name'] = $post->name;
+        $nestedData['email'] = $post->email;
+        $nestedData['user_status'] = ($post->user_status? 'Active' : 'Inactive');
+        $nestedData['company_name'] = $post->company_id!=null ? $post->company->company_name : '-';
+        $nestedData['action'] = $post->company_id!=null? "&emsp;<a href='{$edit}' title='EDIT' ><span class='fa fa-edit'></span></a>
+        &emsp;<a href='{$show}' title='SHOW' ><span class='fa fa-trash'></span></a>" : "-";
         $data[] = $nestedData;
 
         }

@@ -26,7 +26,7 @@
        <div class="col-12 col-lg-6 col-xl-3">
          <div class="card">
            <div class="card-body">
-              <h5 class="mb-0">0 <span class="float-right"><i class="fa fa-certificate"></i></span></h5>
+              <h5 class="mb-0">{{$company_count}}<span class="float-right"><i class="fa fa-certificate"></i></span></h5>
                 <div class="progress my-3" style="height:3px;">
                    <div class="progress-bar gradient-deepblue" style="width:0%"></div>
                 </div>
@@ -39,7 +39,7 @@
        <div class="col-12 col-lg-6 col-xl-3">
          <div class="card">
            <div class="card-body">
-              <h5 class="mb-0">0 <span class="float-right"><i class="fa fa-user"></i></span></h5>
+              <h5 class="mb-0">{{$user_count}} <span class="float-right"><i class="fa fa-user"></i></span></h5>
                 <div class="progress my-3" style="height:3px;">
                    <div class="progress-bar gradient-orange" style="width:0%"></div>
                 </div>

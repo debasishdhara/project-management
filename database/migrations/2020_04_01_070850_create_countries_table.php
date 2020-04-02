@@ -18,6 +18,7 @@ class CreateCountriesTable extends Migration
             $table->string('sort_name');
             $table->string('title');
             $table->integer('phone_code');
+            $table->boolean('country_status')->default(false);
             $table->timestamps();
         });
     }

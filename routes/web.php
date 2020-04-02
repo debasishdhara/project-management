@@ -38,6 +38,18 @@ Route::group(['middleware' => ['auth','super-admin']], function () {
             Route::post('/company-json', 'CompanyController@get_company_json')->name('company-jsons');
             Route::get('/add', 'CompanyController@addcompany')->name('add-company');
         });
+        Route::prefix('users')->group(function () {
+            Route::get('/', 'UsersmaintainController@index')->name('users');
+            Route::post('/user-json', 'UsersmaintainController@get_users_json')->name('user-jsons');
+            Route::get('/add', 'UsersmaintainController@addUsers')->name('add-users');
+        });
+        Route::prefix('permission')->group(function () {
+            Route::get('/fetch-role', 'RoleController@index')->name('fetch-role');
+            Route::post('/fetch-role', 'RoleController@get_role_json')->name('fetch-role');
+            Route::get('/fetch-permission', 'PermissionController@index')->name('fetch-permission');
+            Route::post('/fetch-permission', 'PermissionController@get_permission_json')->name('fetch-permission');
+            Route::get('/fetch-licence', 'LicenceController@index')->name('fetch-licence');
+        });
         Route::prefix('common')->group(function () {
             Route::get('/fetch-country', 'LocationController@show_country')->name('fetch-countries');
             Route::post('/add-country', 'LocationController@show_country')->name('add-countries');

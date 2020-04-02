@@ -20,6 +20,7 @@ class CreateSubCitiesTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('subcity_status')->default(false);
             $table->timestamps();
         });
     }
