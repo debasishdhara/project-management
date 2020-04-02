@@ -20,19 +20,21 @@
 <div class="row col">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header"><i class="fa fa-table"></i>All City Details <div class="pull-right"><a class="btn btn-primary" href="javascript:void(0);">Add City</a></div></div>
+      <div class="card-header"><i class="fa fa-table"></i>All City Details <div class="pull-right"><a class="btn btn-primary" href="{{route('add-cities')}}">Add City</a></div></div>
       <div class="card-body">
         <div class="table-responsive">
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">
           <thead>
               <tr>
                   <th class="col">City Name</th>
+                  <th class="col">State Name</th>
                   <th class="col">Action</th>
               </tr>
           </thead>
           <tfoot>
               <tr>
                 <th>City Name</th>
+                <th>State Name</th>
                 <th>Action</th>
               </tr>
           </tfoot>
@@ -43,29 +45,6 @@
   </div>
 </div>
 <!-- End Row-->
-
-<!-- Bootstrap core JavaScript-->
-<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header"> 
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>             
-            <h4 class="modal-title" id="myModalLabel"> Delete Product</h4>
-      </div>
-      <form action="#" method="POST"> 
-        {{ csrf_field() }}       
-         <input type='hidden' name='data_id' id="del_id"/>   
-          <div class="modal-body">   
-                Are you sure you want to delete?            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <input type="submit" class="btn btn-danger" value='Delete'/>
-          </div>
-     </form>
-    </div>
-  </div>
-</div>
 <!--End Company Index Content-->
 @endsection
 @section('script')
@@ -77,6 +56,56 @@
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript">
+          function deleteData(id){
+            const swalWithBootstrapButtons = Swal.mixin({
+              customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+              },
+              buttonsStyling: false
+            })
+            
+            swalWithBootstrapButtons.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Yes, delete it!',
+              cancelButtonText: 'No, cancel!',
+              reverseButtons: true
+            }).then((result) => {
+              if (result.value) {
+                $.ajax({
+                  url : "{{ route('delete-cities',"")}}/"+id,
+                  type : "POST",
+                  data : {'_method' : 'DELETE', '_token' :"{{csrf_token()}}"},
+                  success: function(data){
+                          swalWithBootstrapButtons.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          );
+                  },
+                  error : function(){
+                        swalWithBootstrapButtons.fire(
+                          'Error!',
+                          'Someting Wrong!!!!!',
+                          'error'
+                        );
+                  }
+              })
+              } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+              ) {
+                swalWithBootstrapButtons.fire(
+                  'Cancelled',
+                  'Your imaginary file is safe :)',
+                  'error'
+                )
+              }
+            })            
+        }
         $(function () {
             
             $('#default-datatable').DataTable({
@@ -121,6 +150,7 @@
                 },
                 columns: [
                     { data: 'title'},
+                    { data: 'state',orderable: false, searchable: false},
                     { data: 'action',hidden:true,orderable: false, searchable: false}
                 ]
             });

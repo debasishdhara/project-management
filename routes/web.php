@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth','super-admin']], function () {
     Route::namespace('Super')->group(function () {
         Route::prefix('company')->group(function () {
             Route::get('/', 'CompanyController@index')->name('company');
+            Route::post('/company-json', 'CompanyController@get_company_json')->name('company-jsons');
             Route::get('/add', 'CompanyController@addcompany')->name('add-company');
         });
         Route::prefix('common')->group(function () {
@@ -49,8 +50,9 @@ Route::group(['middleware' => ['auth','super-admin']], function () {
             Route::post('/edit-state/{state_id}', 'LocationController@show_state')->name('edit-states');
 
             Route::get('/fetch-city', 'LocationController@show_city')->name('fetch-cities');
-            Route::post('/add-city', 'LocationController@show_city')->name('add-cities');
-            Route::post('/delete-city/{city_id}', 'LocationController@show_city')->name('delete-cities');
+            Route::get('/add-city', 'LocationController@add_city')->name('add-cities');
+            Route::post('/add-city', 'LocationController@add_city')->name('add-cities');
+            Route::delete('/delete-city/{city_id}', 'LocationController@delete_city')->name('delete-cities');
             Route::post('/edit-city/{city_id}', 'LocationController@show_city')->name('edit-cities');
 
             Route::get('/fetch-sub-city', 'LocationController@show_sub_city')->name('fetch-sub-cities');

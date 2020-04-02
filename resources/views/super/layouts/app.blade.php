@@ -28,6 +28,7 @@
     <link href="{{ asset('theme/assets/css/app-style.css')}}" rel="stylesheet"/>
     <!-- skins CSS-->
     <link href="{{ asset('theme/assets/css/skins.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css">
 
     @yield('style')
 </head>
@@ -82,7 +83,7 @@
             </li>
             <li class="{{ (request()->is('common*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="waves-effect">
-                <i class="fa fa-industry"></i> <span>Location Settings</span>
+                <i class="fa fa-location-arrow"></i> <span>Location Settings</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="sidebar-submenu">
@@ -235,6 +236,8 @@
     <script src="{{ asset('theme/assets/js/jquery.loading-indicator.js')}}"></script>
     <!-- Custom scripts -->
     <script src="{{ asset('theme/assets/js/app-script.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
     @yield('script')
 </body>
 </html>

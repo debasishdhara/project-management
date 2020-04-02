@@ -25,34 +25,17 @@
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">
           <thead>
               <tr>
-                  <th class="col">Company Name</th>
-                  <th class="col">Email</th>
-                  <th class="col">Phone</th>
-                  <th class="col">Registration Number</th>
-                  <th class="col">Licence Valid Upto</th>
-                  <th class="col">Status</th>
+                  <th class="col">Country Alise Name</th>
+                  <th class="col">Country Name</th>
+                  <th class="col">Phone Code</th>
                   <th class="col">Action</th>
               </tr>
           </thead>
-          <tbody>
-              <tr>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-              </tr>
-          </tbody>
           <tfoot>
               <tr>
-                <th>Company Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Registration Number</th>
-                <th>Licence Valid Upto</th>
-                <th>Status</th>
+                <th>Country Alise Name</th>
+                <th>Country Name</th>
+                <th>Phone Code</th>
                 <th>Action</th>
               </tr>
           </tfoot>
@@ -75,7 +58,8 @@
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js')}}"></script>
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
-    <script type="text/javascript">
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+      <script type="text/javascript">
         $(function () {
             $('#default-datatable').DataTable({
                 pageLength: 10,
@@ -84,7 +68,45 @@
                     ['10 Rows', '25 Rows', '50 Rows', 'Show All']
                 ],
                 ordering: true,
-                responsive: true
+                responsive: {
+                  details: {
+                      display: $.fn.dataTable.Responsive.display.modal( {
+                          header: function ( row ) {
+
+                              var data = row.data();
+                              return 'Details for '+data['title'];
+                          }
+                      } ),
+                      renderer: function ( api, rowIdx, columns ) {
+                        var data = $.map( columns, function ( col, i ) {
+                            return col.hidden ?
+                                '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                    '<td>'+col.title+':'+'</td> '+
+                                    '<td>'+col.data+'</td>'+
+                                '</tr>' :
+                                '';
+                        } ).join('');
+         
+                        return data ?
+                            $('<table/>').append( data ) :
+                            false;
+                    }//$.fn.dataTable.Responsive.renderer.tableAll()
+                  }
+              },
+                processing: true,
+                serverSide: true,
+                ajax:{
+                  url: "{{ route('countries') }}",
+                  dataType: "json",
+                  type: "POST",
+                  data:{ _token: "{{csrf_token()}}"}
+                },
+                columns: [
+                    { data: 'sort_name'},
+                    { data: 'title'},
+                    { data: 'phone_code'},
+                    { data: 'action',hidden:true,orderable: false, searchable: false}
+                ]
             });
         });
     </script>

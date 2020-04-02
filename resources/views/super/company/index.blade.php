@@ -34,17 +34,6 @@
                   <th class="col">Action</th>
               </tr>
           </thead>
-          <tbody>
-              <tr>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-              </tr>
-          </tbody>
           <tfoot>
               <tr>
                 <th>Company Name</th>
@@ -75,7 +64,8 @@
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js')}}"></script>
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
-    <script type="text/javascript">
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+      <script type="text/javascript">
         $(function () {
             $('#default-datatable').DataTable({
                 pageLength: 10,
@@ -84,7 +74,48 @@
                     ['10 Rows', '25 Rows', '50 Rows', 'Show All']
                 ],
                 ordering: true,
-                responsive: true
+                responsive: {
+                  details: {
+                      display: $.fn.dataTable.Responsive.display.modal( {
+                          header: function ( row ) {
+
+                              var data = row.data();
+                              return 'Details for '+data['company_name'];
+                          }
+                      } ),
+                      renderer: function ( api, rowIdx, columns ) {
+                        var data = $.map( columns, function ( col, i ) {
+                            return col.hidden ?
+                                '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                    '<td>'+col.title+':'+'</td> '+
+                                    '<td>'+col.data+'</td>'+
+                                '</tr>' :
+                                '';
+                        } ).join('');
+         
+                        return data ?
+                            $('<table/>').append( data ) :
+                            false;
+                    }//$.fn.dataTable.Responsive.renderer.tableAll()
+                  }
+              },
+                processing: true,
+                serverSide: true,
+                ajax:{
+                  url: "{{ route('company-jsons') }}",
+                  dataType: "json",
+                  type: "POST",
+                  data:{ _token: "{{csrf_token()}}"}
+                },
+                columns: [
+                    { data: 'company_name'},
+                    { data: 'company_email'},
+                    { data: 'company_phone'},
+                    { data: 'company_gstin'},
+                    { data: 'company_validity'},
+                    { data: 'company_status'},
+                    { data: 'action',hidden:true,orderable: false, searchable: false}
+                ]
             });
         });
     </script>
