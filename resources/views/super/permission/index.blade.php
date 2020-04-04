@@ -7,11 +7,11 @@
 <!-- Breadcrumb-->
 <div class="row pt-2 pb-2">
   <div class="col-sm-9">
-  <h4 class="page-title">Licence</h4>
+  <h4 class="page-title">Permission</h4>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="javaScript:void();">Demo Admin</a></li>
-    <li class="breadcrumb-item"><a href="javaScript:void();">Licence</a></li>
-    <li class="breadcrumb-item active" aria-current="page">All Licence</li>
+    <li class="breadcrumb-item"><a href="javaScript:void();">Privilege Settings</a></li>
+    <li class="breadcrumb-item active" aria-current="page">All Permission</li>
   </ol>
 </div>
 <!--Start Licence Index Content-->
@@ -19,7 +19,7 @@
 <div class="row col">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Licence Details</span> <div class="pull-right"><a class="btn btn-primary" href="{{route('add-users')}}">Add Licence</a></div></div>
+      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Permission Details</span> <div class="pull-right"><a class="btn btn-primary" href="{{route('add-permission')}}">Add Permission</a></div></div>
       <div class="card-body">
         <div class="table-responsive">
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">

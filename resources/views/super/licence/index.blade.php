@@ -10,7 +10,7 @@
   <h4 class="page-title">Licence</h4>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="javaScript:void();">Demo Admin</a></li>
-    <li class="breadcrumb-item"><a href="javaScript:void();">Licence</a></li>
+    <li class="breadcrumb-item"><a href="javaScript:void();">Privilege Settings</a></li>
     <li class="breadcrumb-item active" aria-current="page">All Licence</li>
   </ol>
 </div>
@@ -19,25 +19,39 @@
 <div class="row col">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Licence Details</span> <div class="pull-right"><a class="btn btn-primary" href="{{route('add-users')}}">Add Licence</a></div></div>
+      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Licence Details</span> <div class="pull-right"><a class="btn btn-primary" href="{{route('add-licence')}}">Add Licence</a></div></div>
       <div class="card-body">
         <div class="table-responsive">
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">
           <thead>
               <tr>
-                  <th class="col">User Name</th>
-                  <th class="col">Email</th>
-                  <th class="col">Status</th>
-                  <th class="col">Company Name</th>
+                  <th class="col">Licence Name</th>
+                  <th class="col">Licence Key</th>
+                  <th class="col">Licence Description</th>
+                  <th class="col">Licence Discount</th>
+                  <th class="col">Licence Total</th>
+                  <th class="col">Licence Net Total</th>
+                  <th class="col">Licence Validity</th>
+                  <th class="col">Licence Date From</th>
+                  <th class="col">Licence Date To</th>
+                  <th class="col">Mac Address</th>
+                  <th class="col">Licence Status</th>
                   <th class="col">Action</th>
               </tr>
           </thead>
           <tfoot>
               <tr>
-                <th>Company Name</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Company Name</th>
+                <th>Licence Name</th>
+                <th>Licence Key</th>
+                <th>Licence Description</th>
+                <th>Licence Discount</th>
+                <th>Licence Total</th>
+                <th>Licence Net Total</th>
+                <th>Licence Validity</th>
+                <th>Licence Date From</th>
+                <th>Licence Date To</th>
+                <th>Mac Address</th>
+                <th>Licence Status</th>
                 <th>Action</th>
               </tr>
           </tfoot>
@@ -76,7 +90,7 @@
                           header: function ( row ) {
 
                               var data = row.data();
-                              return 'Details for '+data['company_name'];
+                              return 'Details for '+data['licence_name'];
                           }
                       } ),
                       renderer: function ( api, rowIdx, columns ) {
@@ -98,16 +112,23 @@
                 processing: true,
                 serverSide: true,
                 ajax:{
-                  url: "{{ route('user-jsons') }}",
+                  url: "{{ route('fetch-licence') }}",
                   dataType: "json",
                   type: "POST",
                   data:{ _token: "{{csrf_token()}}"}
                 },
                 columns: [
-                    { data: 'name'},
-                    { data: 'email'},
-                    { data: 'user_status',orderable: false, searchable: false},
-                    { data: 'company_name',orderable: false, searchable: false},
+                    { data: 'licence_name'},
+                    { data: 'licence_key'},
+                    { data: 'licence_description'},
+                    { data: 'licence_discount'},
+                    { data: 'licence_amount'},
+                    { data: 'licence_net_amount'},
+                    { data: 'licence_validity'},
+                    { data: 'licence_from'},
+                    { data: 'licence_to'},
+                    { data: 'licence_mac'},
+                    { data: 'licence_status',orderable: false, searchable: false},
                     { data: 'action',hidden:true,orderable: false, searchable: false}
                 ]
             });

@@ -28,9 +28,35 @@
     <link href="{{ asset('theme/assets/css/app-style.css')}}" rel="stylesheet"/>
     <!-- skins CSS-->
     <link href="{{ asset('theme/assets/css/skins.css')}}" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
     @yield('style')
+
+
+    <style type="text/css">
+        /* width */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+            
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+        .table-responsive {
+            overflow-x: unset !important;
+        }
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
 </head>
 <body>
     <!-- start loader -->
@@ -92,9 +118,18 @@
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li class="{{ (request()->is('permission/fetch-role')) ? 'active' : '' }}"><a href="{{route('fetch-role')}}"><i class="zmdi zmdi-arrow-forward"></i> Role</a></li>
-                    <li class="{{ (request()->is('permission/fetch-permission')) ? 'active' : '' }}"><a href="{{route('fetch-permission')}}"><i class="zmdi zmdi-arrow-forward"></i> Permission</a></li>
-                    <li class="{{ (request()->is('permission/fetch-licence')) ? 'active' : '' }}"><a href="{{route('fetch-licence')}}"><i class="zmdi zmdi-arrow-forward"></i> Licence</a></li>
+                    <li class="{{ (request()->is('permission/fetch-role')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-role')}}" class="{{ (request()->is('permission/add-role')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Role
+                        </a>
+                    </li>
+                    <li class="{{ (request()->is('permission/fetch-permission')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-permission')}}" class="{{ (request()->is('permission/add-permission')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Permission
+                        </a>
+                    </li>
+                    <li class="{{ (request()->is('permission/fetch-licence')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-licence')}}" class="{{ (request()->is('permission/add-licence')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Licence
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="{{ (request()->is('common*')) ? 'active' : '' }}">
@@ -175,7 +210,8 @@
         <!--End topbar header-->
         <div class="clearfix"></div>
         <div class="content-wrapper">
-            <div class="container-fluid">            
+            <div class="container-fluid"> 
+                @include('super.layouts.message')           
                 @yield('content')
                 <!--start overlay-->
                 <div class="overlay toggle-menu"></div>
@@ -254,6 +290,31 @@
     <script src="{{ asset('theme/assets/js/app-script.js')}}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+          }
+    </script>
     @yield('script')
+
+    <script>
+        @include('super.layouts.messagetoaster')
+    </script>
 </body>
 </html>

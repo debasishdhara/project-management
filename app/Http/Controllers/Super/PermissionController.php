@@ -90,4 +90,13 @@ class PermissionController extends Controller
             );
         echo json_encode($json_data); 
     }
+
+
+    public function view_permission(){
+        return view('super.permission.create');
+    }
+    public function store_permission(Request $request){
+        dd($request);
+    }
+    
 }
