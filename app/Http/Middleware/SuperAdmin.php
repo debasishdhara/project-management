@@ -18,7 +18,7 @@ class SuperAdmin
     {
         if (Auth::check()) {
             if(!(Auth::user()->roles->pluck('role_name')->contains('SUPERADMIN')))
-                return redirect('/');
+                return redirect('/permissiondenie');
         }
         return $next($request);
     }

@@ -112,22 +112,22 @@
                 <i class="fa fa-user-circle-o"></i> <span>User</span>
                 </a>
             </li>
-            <li class="{{ (request()->is('permission*')) ? 'active' : '' }}">
+            <li class="{{ (request()->is('privilege*')) ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="waves-effect">
                 <i class="fa fa-chain"></i> <span>Privilege Settings</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li class="{{ (request()->is('permission/fetch-role')) ? 'active' : '' }}">
-                        <a href="{{route('fetch-role')}}" class="{{ (request()->is('permission/add-role')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Role
+                    <li class="{{ (request()->is('privilege/role*')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-role')}}" class="{{ (request()->is('privilege/role*')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Role
                         </a>
                     </li>
-                    <li class="{{ (request()->is('permission/fetch-permission')) ? 'active' : '' }}">
-                        <a href="{{route('fetch-permission')}}" class="{{ (request()->is('permission/add-permission')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Permission
+                    <li class="{{ (request()->is('privilege/permission*')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-permission')}}" class="{{ (request()->is('privilege/permission*')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Permission
                         </a>
                     </li>
-                    <li class="{{ (request()->is('permission/fetch-licence')) ? 'active' : '' }}">
-                        <a href="{{route('fetch-licence')}}" class="{{ (request()->is('permission/add-licence')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Licence
+                    <li class="{{ (request()->is('privilege/licence*')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-licence')}}" class="{{ (request()->is('privilege/licence*')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Licence
                         </a>
                     </li>
                 </ul>
@@ -138,10 +138,18 @@
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li class="{{ (request()->is('common/fetch-countries')) ? 'active' : '' }}"><a href="{{route('fetch-countries')}}"><i class="zmdi zmdi-arrow-forward"></i> Country</a></li>
-                    <li class="{{ (request()->is('common/fetch-states')) ? 'active' : '' }}"><a href="{{route('fetch-states')}}"><i class="zmdi zmdi-arrow-forward"></i> State</a></li>
-                    <li class="{{ (request()->is('common/fetch-cities')) ? 'active' : '' }}"><a href="{{route('fetch-cities')}}"><i class="zmdi zmdi-arrow-forward"></i> City</a></li>
-                    <li class="{{ (request()->is('common/fetch-sub-cities')) ? 'active' : '' }}"><a href="{{route('fetch-sub-cities')}}"><i class="zmdi zmdi-arrow-forward"></i> Sub City</a></li>
+                    <li class="{{ (request()->is('common/country*')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-countries')}}" class="{{ (request()->is('common/country*')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Country</a>
+                    </li>
+                    <li class="{{ (request()->is('common/state*')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-states')}}" class="{{ (request()->is('common/state*')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> State</a>
+                    </li>
+                    <li class="{{ (request()->is('common/city*')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-cities')}}" class="{{ (request()->is('common/city*')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> City</a>
+                    </li>
+                    <li class="{{ (request()->is('common/subcity*')) ? 'active' : '' }}">
+                        <a href="{{route('fetch-sub-cities')}}" class="{{ (request()->is('common/subcity*')) ? 'active' : '' }}"><i class="zmdi zmdi-arrow-forward"></i> Sub City</a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -315,6 +323,23 @@
 
     <script>
         @include('super.layouts.messagetoaster')
+    </script>
+    <script>
+        $(document).bind("keyup keydown", function(e){
+            if(e.ctrlKey && e.which == 83){
+                myfunction(e);
+            }
+        });
+        /* $(window).keypress(function(event) {
+            if (event.which == 115 && event.ctrlKey){
+              myfunction();
+              return false;
+            }
+          }); */
+          function myfunction(e){
+            toastr.error("Don't Press Ctrl + S , This is Web Application Not Desktop Application");
+            e.preventDefault();
+          }
     </script>
 </body>
 </html>

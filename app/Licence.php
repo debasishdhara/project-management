@@ -23,6 +23,7 @@ class Licence extends Model
         'licence_validity',
         'licence_from',
         'licence_to',
+        'licence_user_limit',
         'licence_mac',
         'licence_status'
     ];

@@ -4,5 +4,5 @@
 @endif
 <!-- Error Message -->
 @if(Session::has('error'))
-    toastr.error('{{ Session::get('success') }}');
+    toastr.error('{{ Session::get('error') }}');
 @endif

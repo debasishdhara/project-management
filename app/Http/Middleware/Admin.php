@@ -18,7 +18,7 @@ class Admin
     {
         if (Auth::check()) {
             if(!(Auth::user()->roles->pluck('role_name')->contains('ADMIN')))
-                return redirect('/');
+                return redirect('/permissiondenie');
         }
         return $next($request);
     }

@@ -2890,7 +2890,7 @@ hr {
 label {
     color: #e4e6eb;
     font-size: .75rem;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 1px;
     font-weight: 600;
     margin-bottom: 10px;
@@ -6172,3 +6172,6 @@ table.grid td {
     border: 1px solid #0b0b0c !important;
 }
 
+.select2-container{
+    color:#040404 !important;
+}

@@ -69,8 +69,8 @@ class CommonpanelController extends Controller
         {
         foreach ($posts as $post)
         {
-        $show =  route('delete-cities',$post->id);//route('posts.show',$post->id);
-        $edit =  route('edit-cities',$post->id);//route('posts.edit',$post->id);
+        $show =  "deleteData($post->id)";//route('posts.show',$post->id);
+        $edit =  route('edit-countries',$post->id);//route('posts.edit',$post->id);
             //&emsp;<a href='{$show}' title='Delete This Record' ><span class='glyphicon glyphicon-list'></span></a>
            // &emsp;<a href='{$edit}' title='Edit This Record' ><span class='glyphicon glyphicon-edit'></span></a>
         $nestedData['id'] = $post->id;
@@ -79,7 +79,7 @@ class CommonpanelController extends Controller
         $nestedData['phone_code'] = $post->phone_code;
         $nestedData['country_status'] = ($post->country_status) ? 'Active' : 'Inactive';
         $nestedData['action'] = "&emsp;<a href='{$edit}' title='Edit This Record' ><span class='fa fa-edit'></span></a>
-        &emsp;<a href='{$show}' title='Delete This Record' ><span class='fa fa-trash'></span></a>";
+        &emsp;<a href='javascript:void(0);' onclick='{$show}' title='Delete This Record' ><span class='fa fa-trash'></span></a>";
         $data[] = $nestedData;
 
         }
@@ -136,8 +136,8 @@ class CommonpanelController extends Controller
         {
         foreach ($posts as $post)
         {
-        $show =  route('delete-cities',$post->id);//route('posts.show',$post->id);
-        $edit =  route('edit-cities',$post->id);//route('posts.edit',$post->id);
+        $show =  "deleteData($post->id)";//route('posts.show',$post->id);
+        $edit =  route('edit-states',$post->id);//route('posts.edit',$post->id);
             //&emsp;<a href='{$show}' title='Delete This Record' ><span class='glyphicon glyphicon-list'></span></a>
            // &emsp;<a href='{$edit}' title='Edit This Record' ><span class='glyphicon glyphicon-edit'></span></a>
         $nestedData['id'] = $post->id;
@@ -145,7 +145,7 @@ class CommonpanelController extends Controller
         $nestedData['country'] = $post->country->title;
         $nestedData['state_status'] = ($post->state_status) ? 'Active' : 'Inactive';
         $nestedData['action'] = "&emsp;<a href='{$edit}' title='Edit This Record' ><span class='fa fa-edit'></span></a>
-        &emsp;<a href='{$show}' title='Delete This Record' ><span class='fa fa-trash'></span></a>";
+        &emsp;<a href='javascript:void(0);' onclick='{$show}' title='Delete This Record' ><span class='fa fa-trash'></span></a>";
         $data[] = $nestedData;
 
         }
@@ -271,7 +271,7 @@ class CommonpanelController extends Controller
         {
         foreach ($posts as $post)
         {
-        $show =  route('delete-sub-cities',$post->id);//route('posts.show',$post->id);
+        $show = "deleteData($post->id)";//route('posts.show',$post->id);
         $edit =  route('edit-sub-cities',$post->id);//route('posts.edit',$post->id);
             //&emsp;<a href='{$show}' title='Delete This Record' ><span class='glyphicon glyphicon-list'></span></a>
            // &emsp;<a href='{$edit}' title='Edit This Record' ><span class='glyphicon glyphicon-edit'></span></a>
@@ -281,7 +281,7 @@ class CommonpanelController extends Controller
         $nestedData['city'] = $post->city->title;
         $nestedData['subcity_status'] = ($post->subcity_status) ? 'Active' : 'Inactive';
         $nestedData['action'] = "&emsp;<a href='{$edit}' title='Edit This Record' ><span class='fa fa-edit'></span></a>
-        &emsp;<a href='{$show}' title='Delete This Record' ><span class='fa fa-trash'></span></a>";
+        &emsp;<a href='javascript:void(0);' onclick='{$show}' title='Delete This Record' ><span class='fa fa-trash'></span></a>";
         $data[] = $nestedData;
 
         }
@@ -295,4 +295,24 @@ class CommonpanelController extends Controller
             );
         echo json_encode($json_data); 
     }
+
+    public function state_json(Request $request){
+       return State::where('country_id', $request->country_id)->get()
+                ->map(function ($item,$key){
+           return [
+            "id"=> $item->id,
+            "text"=> $item->title
+        ];
+       });
+    }
+
+    public function city_json(Request $request){
+        return City::where('state_id', $request->state_id)->get()
+                 ->map(function ($item,$key){
+            return [
+             "id"=> $item->id,
+             "text"=> $item->title
+         ];
+        });
+     }
 }

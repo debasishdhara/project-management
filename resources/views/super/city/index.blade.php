@@ -82,6 +82,7 @@
                   type : "POST",
                   data : {'_method' : 'DELETE', '_token' :"{{csrf_token()}}"},
                   success: function(data){
+                          $('#default-datatable').DataTable().ajax.reload();
                           swalWithBootstrapButtons.fire(
                             'Deleted!',
                             'Your file has been deleted.',

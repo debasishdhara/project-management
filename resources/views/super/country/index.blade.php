@@ -19,7 +19,7 @@
 <div class="row col">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Country Details <div class="pull-right"><a class="btn btn-primary" href="{{route('add-company')}}">Add Country</a></div></div>
+      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Country Details <div class="pull-right"><a class="btn btn-primary" href="{{route('add-countries')}}">Add Country</a></div></div>
       <div class="card-body">
         <div class="table-responsive">
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">
@@ -28,6 +28,7 @@
                   <th class="col">Country Alise Name</th>
                   <th class="col">Country Name</th>
                   <th class="col">Phone Code</th>
+                  <th class="col">Status</th>
                   <th class="col">Action</th>
               </tr>
           </thead>
@@ -36,6 +37,7 @@
                 <th>Country Alise Name</th>
                 <th>Country Name</th>
                 <th>Phone Code</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
           </tfoot>
@@ -60,6 +62,57 @@
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
       <script type="text/javascript">
+        function deleteData(id){
+          const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.value) {
+              $.ajax({
+                url : "{{ route('delete-countries',"")}}/"+id,
+                type : "POST",
+                data : {'_method' : 'DELETE', '_token' :"{{csrf_token()}}"},
+                success: function(data){
+                         $('#default-datatable').DataTable().ajax.reload();
+                        swalWithBootstrapButtons.fire(
+                          'Deleted!',
+                          'Your Record been deleted.',
+                          'success'
+                        );
+                },
+                error : function(){
+                      swalWithBootstrapButtons.fire(
+                        'Error!',
+                        'Someting Wrong!!!!!',
+                        'error'
+                      );
+                }
+            })
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your Record is safe :)',
+                'error'
+              )
+            }
+          })            
+      }
         $(function () {
             $('#default-datatable').DataTable({
                 pageLength: 10,
@@ -105,6 +158,7 @@
                     { data: 'sort_name'},
                     { data: 'title'},
                     { data: 'phone_code'},
+                    { data: 'country_status',orderable: false, searchable: false},
                     { data: 'action',hidden:true,orderable: false, searchable: false}
                 ]
             });

@@ -14,7 +14,8 @@ class Country extends Model
     protected $fillable = [
         'sort_name',
         'title',
-        'phone_code'
+        'phone_code',
+        'country_status'
     ];
     public function state(){
         return $this->hasMany(State::class,'country_id','id');

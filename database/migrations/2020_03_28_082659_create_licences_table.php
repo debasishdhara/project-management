@@ -17,7 +17,7 @@ class CreateLicencesTable extends Migration
             $table->id();
             $table->string('licence_name');
             $table->string('licence_key')->unique();
-            $table->string('licence_description')->nullable();
+            $table->longText('licence_description')->nullable();
             $table->double('licence_discount', 8, 2)->default(0.00);
             $table->double('licence_amount', 8, 2)->default(0.00);
             $table->double('licence_tax', 8, 2)->default(0.00);
@@ -26,8 +26,10 @@ class CreateLicencesTable extends Migration
             $table->bigInteger('licence_validity')->default(1);
             $table->date('licence_from')->nullable();
             $table->date('licence_to')->nullable();
+            $table->bigInteger('licence_user_limit')->default(2);
             $table->string('licence_mac')->nullable();
             $table->boolean('licence_status')->default(false);
+            $table->boolean('licence_pre_status')->default(false);
             $table->timestamps();
         });
     }

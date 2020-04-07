@@ -14,7 +14,8 @@ class SubCity extends Model
     protected $fillable = [
         'title',
         'zip_code',
-        'city_id'
+        'city_id',
+        'subcity_status'
     ];
 
     public function city(){

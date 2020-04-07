@@ -53,12 +53,15 @@ class LoginController extends Controller
         // dd($credentials);
         if (Auth::attempt(['email'=>$request->email,'password'=>$request->password, 'user_status' => 1])) {
             // Authentication passed...
-            if((Auth::user()->roles->pluck('role_name')->contains('SUPERADMIN')))
+            if((Auth::user()->roles->pluck('role_name')->contains('SUPERADMIN'))){
                 return redirect(RouteServiceProvider::HOME);
-            else if((Auth::user()->roles->pluck('role_name')->contains('ADMIN')))
+            }else if((Auth::user()->roles->pluck('role_name')->contains('ADMIN'))){
+                
                 return redirect(RouteServiceProvider::ADMIN);
-            else
+            }else{
+
                 return redirect(RouteServiceProvider::USER);
+            }
         }else{
             Auth::logout();
             return redirect('/');

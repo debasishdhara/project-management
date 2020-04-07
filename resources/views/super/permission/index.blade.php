@@ -60,6 +60,57 @@
 <script src="{{asset('theme/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
       <script type="text/javascript">
+        function deleteData(id){
+          const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.value) {
+              $.ajax({
+                url : "{{ route('delete-permission',"")}}/"+id,
+                type : "POST",
+                data : {'_method' : 'DELETE', '_token' :"{{csrf_token()}}"},
+                success: function(data){
+                        $('#default-datatable').DataTable().ajax.reload();
+                        swalWithBootstrapButtons.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                        );
+                },
+                error : function(){
+                      swalWithBootstrapButtons.fire(
+                        'Error!',
+                        'Someting Wrong!!!!!',
+                        'error'
+                      );
+                }
+            })
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+              )
+            }
+          })            
+      }
         $(function () {
             $('#default-datatable').DataTable({
                 pageLength: 10,
