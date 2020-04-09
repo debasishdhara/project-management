@@ -23,6 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_address_line_3')->nullable();
             $table->string('company_state')->nullable();
             $table->string('company_country')->nullable();
+            $table->string('company_city')->nullable();
             $table->string('company_pin')->nullable();
             $table->string('company_fax')->nullable();
             $table->string('company_gstin')->nullable();

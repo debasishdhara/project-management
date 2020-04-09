@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth','super-admin']], function () {
             Route::get('/', 'CompanyController@index')->name('company');
             Route::post('/company-json', 'CompanyController@get_company_json')->name('company-jsons');
             Route::get('/add', 'CompanyController@addcompany')->name('add-company');
+            Route::post('/add', 'CompanyController@store_company')->name('add-company');
         });
         /** User */
         Route::prefix('users')->group(function () {

@@ -19,7 +19,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'user_status'
+        'user_status',
+        'user_image',
+        'frist_name',
+        'last_name',
+        'user_phone',
+        'user_address_line_1',
+        'user_address_line_2',
+        'user_address_line_3',
+        'user_country',
+        'user_state',
+        'user_city',
+        'user_pincode',
+        'company_id'
     ];
 
     /**
@@ -53,6 +65,6 @@ class User extends Authenticatable
      */
     public function company()
     {
-        return $this->hasMany(Company::class,'id','company_id');
+        return $this->hasOne(Company::class,'id','company_id');
     }
 }

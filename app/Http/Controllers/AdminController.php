@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+
 
 class AdminController extends Controller
 {
@@ -24,6 +26,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //dd(Session::get('company_image'));
+        return view('admin.home');
     }
 }

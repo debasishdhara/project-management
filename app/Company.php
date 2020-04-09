@@ -20,6 +20,7 @@ class Company extends Model
         'company_address_line_3',
         'company_state',
         'company_country',
+        'company_city',
         'company_pin',
         'company_fax',
         'company_gstin',
@@ -28,10 +29,17 @@ class Company extends Model
         'company_validity',
         'company_from',
         'company_to',
-        'company_status'
+        'company_logo',
+        'company_status',
+        'company_remarks'
     ];
 
     public function user(){
-        return $this->belongsTo(User::class,'company_id','id');
+        return $this->belongsToMany(User::class,'company_id','id');
+    }
+
+
+    public function licence(){
+        return $this->belongsToMany(Licence::class,'licence_company');
     }
 }

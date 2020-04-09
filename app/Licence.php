@@ -27,4 +27,13 @@ class Licence extends Model
         'licence_mac',
         'licence_status'
     ];
+
+
+    /**
+     * The permissions that belong to the role.
+     */
+    public function company()
+    {
+        return $this->belongsToMany(Company::class,'licence_company');
+    }
 }

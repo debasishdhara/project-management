@@ -22,6 +22,16 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->boolean('user_status')->default(false);
             $table->string('user_image')->nullable();
+            $table->string('frist_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('user_phone')->nullable();
+            $table->string('user_address_line_1')->nullable();
+            $table->string('user_address_line_2')->nullable();
+            $table->string('user_address_line_3')->nullable();
+            $table->string('user_country')->nullable();
+            $table->string('user_state')->nullable();
+            $table->string('user_city')->nullable();
+            $table->string('user_pincode')->nullable();
             $table->timestamps();
         });
     }

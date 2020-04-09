@@ -7,6 +7,10 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Session;
+use Carbon\Carbon;
+use App\Company;
 
 class LoginController extends Controller
 {
@@ -56,10 +60,12 @@ class LoginController extends Controller
             if((Auth::user()->roles->pluck('role_name')->contains('SUPERADMIN'))){
                 return redirect(RouteServiceProvider::HOME);
             }else if((Auth::user()->roles->pluck('role_name')->contains('ADMIN'))){
-                
+                $company_details = Company::find(Auth::user()->company_id);
+                $request->session()->put('company_details', $company_details);
                 return redirect(RouteServiceProvider::ADMIN);
             }else{
-
+                $company_details = Company::find(Auth::user()->company_id);
+                $request->session()->put('company_details', $company_details);
                 return redirect(RouteServiceProvider::USER);
             }
         }else{

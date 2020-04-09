@@ -19,7 +19,9 @@
 <div class="row col">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Users Details</span> <div class="pull-right"><a class="btn btn-primary" href="{{route('add-users')}}">Add User</a></div></div>
+      <div class="card-header"><span class="card-title"><i class="fa fa-table"></i> All Users Details</span> <div class="pull-right">
+        {{-- <a class="btn btn-primary" href="{{route('add-users')}}">Add User</a> --}}
+      </div></div>
       <div class="card-body">
         <div class="table-responsive">
         <table id="default-datatable" class="table table-bordered display responsive nowrap" width="100%">
