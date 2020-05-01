@@ -134,7 +134,7 @@ class CompanyController extends Controller
         $nestedData['company_phone'] = $post->company_phone;
         $nestedData['company_gstin'] = $post->company_gstin;
         $nestedData['company_validity'] = $post->company_validity;
-        $nestedData['company_status'] = $post->company_status;
+        $nestedData['company_status'] = $post->company_status ? 'Active' : 'Inactive';
         $nestedData['action'] = "&emsp;<a href='{$edit}' title='EDIT' ><span class='fa fa-edit'></span></a>
         &emsp;<a href='{$show}' title='SHOW' ><span class='fa fa-trash'></span></a>";
         $data[] = $nestedData;
@@ -230,9 +230,9 @@ class CompanyController extends Controller
                  */
                 $licence_details= Licence::where('licence_pre_status', 1)->first();
                 $company_validity=$licence_details->licence_validity;
+                $company_start=Carbon::now();
+                $company_to=$company_start->addDays($company_validity);
                 $company_from=Carbon::now();
-                $company_to=$company_from->addDays($company_validity);
-
                 /**
                  * user details
                  */

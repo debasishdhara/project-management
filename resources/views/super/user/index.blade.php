@@ -31,7 +31,7 @@
                   <th class="col">Email</th>
                   <th class="col">Status</th>
                   <th class="col">Company Name</th>
-                  <th class="col">Action</th>
+                  {{--  <th class="col">Action</th>  --}}
               </tr>
           </thead>
           <tfoot>
@@ -40,7 +40,7 @@
                 <th>Email</th>
                 <th>Status</th>
                 <th>Company Name</th>
-                <th>Action</th>
+                {{--  <th>Action</th>  --}}
               </tr>
           </tfoot>
       </table>
@@ -110,7 +110,7 @@
                     { data: 'email'},
                     { data: 'user_status',orderable: false, searchable: false},
                     { data: 'company_name',orderable: false, searchable: false},
-                    { data: 'action',hidden:true,orderable: false, searchable: false}
+                    /*{ data: 'action',hidden:true,orderable: false, searchable: false}*/
                 ]
             });
         });

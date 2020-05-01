@@ -32,7 +32,7 @@
                   <th class="col">Registration Number</th>
                   <th class="col">Licence Valid Upto</th>
                   <th class="col">Status</th>
-                  <th class="col">Action</th>
+                  {{--  <th class="col">Action</th>  --}}
               </tr>
           </thead>
           <tfoot>
@@ -43,7 +43,7 @@
                 <th>Registration Number</th>
                 <th>Licence Valid Upto</th>
                 <th>Status</th>
-                <th>Action</th>
+                {{--  <th>Action</th>  --}}
               </tr>
           </tfoot>
       </table>
@@ -115,7 +115,7 @@
                     { data: 'company_gstin'},
                     { data: 'company_validity'},
                     { data: 'company_status'},
-                    { data: 'action',hidden:true,orderable: false, searchable: false}
+                   /* { data: 'action',hidden:true,orderable: false, searchable: false}*/
                 ]
             });
         });

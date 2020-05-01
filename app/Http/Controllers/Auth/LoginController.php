@@ -69,7 +69,7 @@ class LoginController extends Controller
                 return redirect(RouteServiceProvider::USER);
             }
         }else{
-            Auth::logout();
+            //Auth::logout();
             return redirect('/');
         }
 
